@@ -57,7 +57,7 @@ services:
       timeout: 2s
       retries: 15
 
-  http-es-log-server:
+  kong-http-log-server:
     build: .
     restart: always
     container_name: kong-http-log-server

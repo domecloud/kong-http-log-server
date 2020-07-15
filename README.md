@@ -35,7 +35,7 @@ Ref: [https://gobyexample.com/time-formatting-parsing](https://gobyexample.com/t
 ```
 docker-compose up -d kong-database
 docker-compose up migrations
-docker-compose up -d kong elasticsearch kibana http-es-log-server 
+docker-compose up -d kong elasticsearch kibana kong-http-log-server 
 ```
 
 # Create sevice and route
