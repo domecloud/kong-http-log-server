@@ -1,6 +1,6 @@
 # kong-http-log-server
 
-HTTP log server for Kong http-log plugin for Elasticsearch and more
+HTTP log server for Kong [http-log](https://docs.konghq.com/hub/kong-inc/http-log/) plugin for Elasticsearch and more
 
 ![kong-http-log-server-diagram](./kong-http-log-server-diagram.png)
 
@@ -50,7 +50,7 @@ curl http://127.0.0.1:8001/services/httpbin/routes -d name=httpbin -d paths[]=/
 ```
 curl http://127.0.0.1:8001/services/httpbin/plugins \
 	-d name=http-log \
-	-d config.http_endpoint=http://http-es-log-server:8080/
+	-d config.http_endpoint=http://kong-http-log-server:8080/
 ```
 
 # Kibana
