@@ -11,12 +11,14 @@ import (
 	"github.com/labstack/echo"
 )
 
-// ESLogger function for ElastciSearch log handler
+// ESLogger function for Elastic Search log handler
 func ESLogger(c echo.Context) error {
 	body := echo.Map{}
 	if err := c.Bind(&body); err != nil {
 		return err
 	}
+
+	body["@timestamp"] = time.Now().Format(time.RFC3339)
 
 	indexPattern := os.Getenv("INDEX_PATTERN")
 
@@ -41,7 +43,7 @@ func ESLogger(c echo.Context) error {
 
 	reqBody, err := json.Marshal(body)
 
-	// Call the api
+	// Send log to ElasticSearch
 	resp, err := client.Post(
 		fmt.Sprintf("http://%s:%s/%s/_doc", esHost, esPort, currentTime),
 		"application/json",
@@ -56,6 +58,5 @@ func ESLogger(c echo.Context) error {
 
 	var result map[string]interface{}
 	json.NewDecoder(resp.Body).Decode(&result)
-	// res := map[string]string{"currentTime": currentTime, "bar": "ok", "es_host": esHost, "es_port": esPort}
 	return c.JSON(http.StatusOK, result)
 }
