@@ -1,4 +1,4 @@
-module dome.cloud/http-es-log
+module dome.cloud/kong-http-log-server
 
 go 1.14
 

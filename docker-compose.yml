@@ -60,7 +60,7 @@ services:
   http-es-log-server:
     build: .
     restart: always
-    container_name: http-es-log-server
+    container_name: kong-http-log-server
     volumes: 
       - ./.env:/app/.env
 

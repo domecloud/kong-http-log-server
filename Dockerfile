@@ -4,11 +4,11 @@ RUN apk --update --no-cache add build-base
 WORKDIR /app
 ADD . .
 RUN go mod download
-RUN go build -o /app/http-es-log-server .
+RUN go build -o /app/kong-http-log-server .
 
 FROM alpine
 WORKDIR /app
-COPY --from=builder /app/http-es-log-server .
+COPY --from=builder /app/kong-http-log-server .
 EXPOSE 8080
-CMD ["/app/http-es-log-server"]
+CMD ["/app/kong-http-log-server"]
 
