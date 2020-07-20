@@ -58,7 +58,7 @@ services:
       retries: 15
 
   kong-http-log-server:
-    build: .
+    image: domecloud/kong-http-log-server
     restart: always
     container_name: kong-http-log-server
     volumes: 
